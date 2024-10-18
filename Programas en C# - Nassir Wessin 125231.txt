@@ -1,0 +1,134 @@
+PROGRAMA #1
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingrese la cantidad de elementos de la secuencia de Fibonacci: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int a = 0, b = 1, temp;
+
+        Console.WriteLine("Secuencia de Fibonacci:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a + " ");
+            temp = a;
+            a = b;
+            b = temp + b;
+        }
+    }
+}
+
+
+PROGRAMA #2
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingrese un número: ");
+        int num = int.Parse(Console.ReadLine());
+
+        if (num % 2 == 0)
+            Console.WriteLine("El número es par.");
+        else
+            Console.WriteLine("El número es impar.");
+    }
+}
+
+
+
+PROGRAMA #3
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingrese un número: ");
+        int num = int.Parse(Console.ReadLine());
+
+        bool esPrimo = EsPrimo(num);
+
+        if (esPrimo)
+            Console.WriteLine("El número es primo.");
+        else
+            Console.WriteLine("El número no es primo.");
+    }
+
+    static bool EsPrimo(int num)
+    {
+        if (num <= 1)
+            return false;
+
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+                return false;
+        }
+        return true;
+    }
+}
+
+
+
+PROGRAMA #4
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingrese el Sueldo Bruto: ");
+        double sueldoBruto = double.Parse(Console.ReadLine());
+
+        double seguro = sueldoBruto * 0.04;  // Ejemplo: 4% de seguro
+        double pension = sueldoBruto * 0.10; // Ejemplo: 10% de pensión
+        double impuestos = sueldoBruto * 0.15; // Ejemplo: 15% de impuestos
+
+        double deducciones = seguro + pension + impuestos;
+        double sueldoNeto = sueldoBruto - deducciones;
+
+        Console.WriteLine($"Deducciones totales: {deducciones:C}");
+        Console.WriteLine($"Sueldo Neto: {sueldoNeto:C}");
+    }
+}
+
+
+
+PROGRAMA #5
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingrese el monto: ");
+        int monto = int.Parse(Console.ReadLine());
+
+        int[] denominaciones = { 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1 };
+        int[] cantidades = new int[denominaciones.Length];
+
+        for (int i = 0; i < denominaciones.Length; i++)
+        {
+            cantidades[i] = monto / denominaciones[i];
+            monto %= denominaciones[i];
+        }
+
+        Console.WriteLine("Cantidad mínima de monedas y billetes:");
+        for (int i = 0; i < denominaciones.Length; i++)
+        {
+            if (cantidades[i] > 0)
+                Console.WriteLine($"{denominaciones[i]:C}: {cantidades[i]}");
+        }
+    }
+}
+
